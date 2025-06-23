@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIMA VIDEO</title>
+    <link rel="stylesheet" href="./style/normalize.css">
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>¡Bienvenido a PRIMA VIDEO!</h1>
+    </header>
+    <main>
+        <section id="añade-película">
+            <h2>Añade tu película favorita</h2>
+            <form id="formulario-pelicula">
+                <label for="titulo">Titulo:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="introduce el titulo" required>
+                <label for="año">Año:</label>
+                <input type="number" min="1800" max="2025" id="año" name="año" placeholder="introduce el año" required>
+                <label for="descripcion">Descripcion:</label>
+                <input type="text" id="descripcion" name="descripcion" placeholder="introduce una descripcion" required>
+                <label for="url_img">Url_img:</label>
+                <input type="url" id="url_img" name="url_img" placeholder="introduce url" required>
+                <label for="genero">Genero:</label>
+                <select id="genero" name="genero" required>
+                    <option value="terror">Terror</option>
+                    <option value="accion">Accion</option>
+                    <option value="comedia">Comedia</option>
+                    <option value="romantica">Romantica</option>
+                </select>
+
+                <button type="submit">Añade tu película</button>
+            </form>
+
+        </section>
+        <section id="filtro-unico">
+            <h2>Filtra por genero</h2>
+            <select id="unicofiltro">
+                <option value="">-- Todos los géneros --</option>
+                <option value="terror">Terror</option>
+                <option value="accion">Accion</option>
+                <option value="comedia">Comedia</option>
+                <option value="romantica">Romantica</option>
+            </select>
+        </section>
+
+        <section id="filtrado">
+            <!--aquí va el resultado de filtrar-->
+        </section>
+
+        <section id="peliculitas">
+            <table id="tablapeliculas">
+                
+            </table>
+        </section>
+
+
+
+    </main>
+    <script src="./script.js"></script>
+</body>
+
+</html>
