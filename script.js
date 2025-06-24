@@ -30,11 +30,11 @@ const peliculas = [
 ];
 
 //renderizar lista peliculas en una tabla
-function renderPeliculasList() {
+function renderPeliculasList(lista = peliculas) {
     const peliculasList = document.getElementById("tablapeliculas");
     peliculasList.innerHTML = ""; //limpia antes de pintar
 
-    peliculas.forEach(pelicula => {
+    lista.forEach(pelicula => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
        <td> ${pelicula.titulo}</td>
@@ -73,7 +73,6 @@ function filtrarPorGenero(genero) {
     return peliculas.filter(pelicula => pelicula.genero.toLowerCase() === genero.toLowerCase());
 }
 
-
 document.getElementById("unicofiltro").addEventListener("change", (event) => {
     const generoSeleccionado = event.target.value;
     // const peliculasFiltradas = filtrarPorGenero(generoSeleccionado);
@@ -88,25 +87,15 @@ document.getElementById("unicofiltro").addEventListener("change", (event) => {
         peliculasFiltradas = filtrarPorGenero(generoSeleccionado);
     }
 
-    const filteredPeliculaSection = document.getElementById("filtrado");
-    filteredPeliculaSection.innerHTML = ""; // Limpiar la sección
+    renderPeliculasList(peliculasFiltradas); // Pinta directamente en la tabla
 
-    if (peliculasFiltradas.length > 0) {
-        peliculasFiltradas.forEach(pelicula => {
-            const article = document.createElement("article");
-            article.innerHTML = `
-          <p><b>Título:</b> ${pelicula.titulo}</p>
-          <p><b>Año:</b> ${pelicula.año}</p>
-          <p><b>Descripción:</b> ${pelicula.descripcion}</p>
-          <p><b>Género:</b> ${pelicula.genero}</p>
-          <img src="${pelicula.url_img}" alt="${pelicula.titulo}" width="200">
-        `;
-            filteredPeliculaSection.appendChild(article);
-        });
-    } else {
-        filteredPeliculaSection.innerHTML = "<p>No se encontró ninguna película con ese género.</p>";
+    if (lista.length === 0) {
+        peliculasList.innerHTML = `<tr><td colspan="5">No se encontraron películas para ese género.</td></tr>`;
+        return;
     }
 });
+
+
 
 
 

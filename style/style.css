@@ -1,5 +1,113 @@
 :root {
+    --raisin-black: #28262C;
+    --tropical-indigo: #998FC7;
+    --periwinkle: #D4C2FC;
+    --magnolia: #F9F5FF;
+    --resolution-blue: #14248A;
+}
 
+/* Reset básico */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--magnolia);
+    color: var(--raisin-black);
+}
 
+/* Header */
+header {
+    background-color: var(--resolution-blue);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
 
-};
+/* Main layout */
+main {
+    padding: 2rem;
+}
+
+/* Formularios */
+form {
+    background-color: var(--periwinkle);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(40, 38, 44, 0.2);
+    margin-bottom: 2rem;
+}
+
+form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    border: 1px solid var(--raisin-black);
+    border-radius: 5px;
+}
+
+form button {
+    margin-top: 1rem;
+    background-color: var(--resolution-blue);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: var(--tropical-indigo);
+}
+
+/* Tabla de películas */
+#peliculitas table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(40, 38, 44, 0.1);
+}
+
+#peliculitas th {
+    background-color: var(--resolution-blue);
+    color: white;
+    padding: 0.8rem;
+    text-align: left;
+}
+
+#peliculitas td {
+    padding: 0.7rem;
+    border-bottom: 1px solid var(--periwinkle);
+    vertical-align: top;
+}
+
+#peliculitas img {
+    max-width: 100px;
+    border-radius: 5px;
+}
+
+/* Filtro */
+#filtro-unico {
+    margin: 2rem 0;
+}
+
+#unicofiltro {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--raisin-black);
+}
+
+/* Footer */
+footer,
+body>p:last-of-type {
+    text-align: center;
+    color: var(--raisin-black);
+    margin-top: 3rem;
+    padding: 1rem;
+    background-color: var(--periwinkle);
+}
