@@ -64,6 +64,44 @@ document.getElementById("formulario-pelicula").addEventListener("submit", (event
         renderPeliculasList(); // Actualizar la lista de peliculas
         event.target.reset(); // Limpiar el formulario
     }
+
+
+    let msj = "";
+
+    if (titulo.length < 2 || titulo.length > 70) {
+        //err
+        msj += "El nombre tiene que estar comprendido entre 1 y 70 caracteres\n";
+    }
+
+    if (descripcion.length < 15 || descripcion.length > 160) {
+        //err
+        console.log("Nombre fuera de tamaño: 15-160");
+        msj += "La descripcion debe tener entre 15 y 160 caracteres\n";
+    }
+
+    if (año < 1800 || año > 2025) {
+        //err
+        console.log("Nombre fuera de tamaño: 1800-2025");
+        msj += "El año tiene que estar comprendido entre 1800 y 2025\n";
+    }
+
+    // if (genero !== "terror" && genero !== "accion" && genero !== "comedia" && genero !== "romantica") {
+    //     console.log("Género inválido");
+    //     msj += "Debes seleccionar un género válido (terror, acción, comedia, romántica)\n";
+    // }
+
+    if (msj.length != 0) {
+        alert(msj); //imprime mensaje final de error
+        document.getElementById("añade-película").innerHTML += msj;
+        let p = document.createElement("pre");
+        let mensaje = document.createTextNode(msj);
+        p.style.color = "#DD1C1A";
+        p.style.fontSize = "16px";
+        p.appendChild(mensaje);
+
+    } else {
+        alert("enviado con exito");
+    }
 });
 
 //filtro por genero
