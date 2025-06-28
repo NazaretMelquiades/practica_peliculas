@@ -58,14 +58,6 @@ document.getElementById("formulario-pelicula").addEventListener("submit", (event
     const genero = event.target.elements.genero.value.trim();
     const url_img = event.target.elements.url_img.value.trim();
 
-    if (titulo && año && descripcion && genero && url_img) {
-        const nuevaPelicula = { titulo, año, descripcion, genero, url_img };
-        peliculas.push(nuevaPelicula);
-        renderPeliculasList(); // Actualizar la lista de peliculas
-        event.target.reset(); // Limpiar el formulario
-    }
-
-
     let msj = "";
 
     if (titulo.length < 2 || titulo.length > 70) {
@@ -85,11 +77,6 @@ document.getElementById("formulario-pelicula").addEventListener("submit", (event
         msj += "El año tiene que estar comprendido entre 1800 y 2025\n";
     }
 
-    // if (genero !== "terror" && genero !== "accion" && genero !== "comedia" && genero !== "romantica") {
-    //     console.log("Género inválido");
-    //     msj += "Debes seleccionar un género válido (terror, acción, comedia, romántica)\n";
-    // }
-
     if (msj.length != 0) {
         alert(msj); //imprime mensaje final de error
         document.getElementById("añade-película").innerHTML += msj;
@@ -98,9 +85,17 @@ document.getElementById("formulario-pelicula").addEventListener("submit", (event
         p.style.color = "#DD1C1A";
         p.style.fontSize = "16px";
         p.appendChild(mensaje);
+        return;
 
     } else {
         alert("enviado con exito");
+    }
+
+    if (titulo && año && descripcion && genero && url_img) {
+        const nuevaPelicula = { titulo, año, descripcion, genero, url_img };
+        peliculas.push(nuevaPelicula);
+        renderPeliculasList(); // Actualizar la lista de peliculas
+        event.target.reset(); // Limpiar el formulario
     }
 });
 
