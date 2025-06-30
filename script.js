@@ -34,7 +34,7 @@ function renderPeliculasList(lista = peliculas) {
     const peliculasList = document.getElementById("tablapeliculas");
     peliculasList.innerHTML = ""; //limpia antes de pintar
 
-    lista.forEach(pelicula => {
+    lista.forEach((pelicula, index) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
        <td> ${pelicula.titulo}</td>
@@ -42,7 +42,19 @@ function renderPeliculasList(lista = peliculas) {
        <td> ${pelicula.descripcion}</td>
        <td> ${pelicula.genero}</td>
        <td> <img src= ${pelicula.url_img}></td>
-      `;
+            <td>
+               <button class="delete-button">Eliminar</button>
+               <button class="edit-button">Editar</button>
+           </td>
+        `;
+
+        // Agregar evento al botón de eliminar
+        const deleteButton = tr.querySelector(".delete-button");
+        deleteButton.addEventListener("click", () => {
+            lista.splice(index, 1); // Borra del array original
+            renderPeliculasList(lista); // Vuelve a renderizar la tabla
+        });
+
         peliculasList.appendChild(tr);
     });
 }
